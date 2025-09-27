@@ -1,15 +1,47 @@
-import streamlit as st
+# import streamlit as st
+# import google.generativeai as genai
+# import matplotlib.pyplot as plt
+# import yfinance as yf
+# import numpy as np
+# import json
+# import pandas as pd
+
+
+# # # Google auth (ADC 已经配置好)
+# genai.configure()
+# model = genai.GenerativeModel('gemini-2.5-pro')
+
+import os, json, streamlit as st
 import google.generativeai as genai
 import matplotlib.pyplot as plt
 import yfinance as yf
 import numpy as np
-import json
 import pandas as pd
 
+def configure_genai():
+    # 1) Simplest: Gemini API key
+    api_key = os.environ.get("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
+    if api_key:
+        genai.configure(api_key=api_key)
+        return
 
-# # Google auth (ADC 已经配置好)
-genai.configure()
-model = genai.GenerativeModel('gemini-2.5-pro')
+    # 2) Service account JSON stored in Streamlit secrets
+    sa_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")
+    if sa_json:
+        sa_path = "/tmp/sa.json"
+        with open(sa_path, "w") as f:
+            f.write(sa_json if isinstance(sa_json, str) else json.dumps(sa_json))
+        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
+        genai.configure()
+        return
+
+    # 3) Fallback (works locally with ADC)
+    genai.configure()
+
+configure_genai()
+
+# Create model
+model = genai.GenerativeModel("gemini-2.5-pro")
 
 
 def get_sector(ticker):
