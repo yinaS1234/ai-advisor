@@ -139,7 +139,7 @@ if submit:
     keys = ["return_change", "risk_change", "drawdown_change"]
     #ax2.bar(["Return", "Risk", "Drawdown"], [delta[k] for k in keys])
     ax2.bar(
-    ["Return", "Risk (Std Dev", "Drawdown (MaxDD– Worst Drop)"],
+    ["Return", "Risk (Std)", "Drawdown (MaxDD–Worst Drop)"],
     [delta[k] for k in keys])
     ax2.set_title("Portfolio Impact (%)")
     st.pyplot(fig2)
