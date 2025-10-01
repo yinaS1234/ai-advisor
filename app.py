@@ -23,15 +23,24 @@ def configure_genai():
     if sa_json:
         sa_path = "/tmp/sa.json"
         try:
+            # 如果是 str，就先 parse
+            if isinstance(sa_json, str):
+                sa_dict = json.loads(sa_json)   # 变成 dict
+            else:
+                sa_dict = sa_json               # 已经是 dict
+
             with open(sa_path, "w") as f:
-                f.write(json.loads(sa_json.replace('\n', '\\n')))  # Fix newlines
+                json.dump(sa_dict, f)           # 正确写入 JSON 文件
+
             os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
             genai.configure()
-            st.write("ADC configured at:", sa_path)
+            st.write("✅ ADC configured with service account at:", sa_path)
             return
         except Exception as e:
-            st.error(f"ADC error: {e}")
-    st.error("No GCP_SERVICE_ACCOUNT_JSON.")
+            st.error(f"❌ Failed to configure ADC: {e}")
+    else:
+        st.error("⚠️ No GCP_SERVICE_ACCOUNT_JSON found in secrets.")
+
 
 configure_genai()
 model = genai.GenerativeModel("gemini-2.5-pro")
