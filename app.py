@@ -16,7 +16,7 @@ def configure_genai():
 
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
     genai.configure()
-    st.write("✅ ADC configured successfully")
+    #st.write("✅ ADC configured successfully")
 
 # Call once at startup
 configure_genai()
@@ -137,7 +137,10 @@ if submit:
     # Bar chart (fixed order)
     fig2, ax2 = plt.subplots()
     keys = ["return_change", "risk_change", "drawdown_change"]
-    ax2.bar(["Return", "Risk", "Drawdown"], [delta[k] for k in keys])
+    #ax2.bar(["Return", "Risk", "Drawdown"], [delta[k] for k in keys])
+    ax2.bar(
+    ["Return", "Risk (Std Dev", "Drawdown (MaxDD– Worst Drop)"],
+    [delta[k] for k in keys])
     ax2.set_title("Portfolio Impact (%)")
     st.pyplot(fig2)
 
