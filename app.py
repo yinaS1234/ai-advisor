@@ -1,15 +1,3 @@
-# import streamlit as st
-# import google.generativeai as genai
-# import matplotlib.pyplot as plt
-# import yfinance as yf
-# import numpy as np
-# import json
-# import pandas as pd
-
-
-# # # Google auth (ADC 已经配置好)
-# genai.configure()
-# model = genai.GenerativeModel('gemini-2.5-pro')
 
 import os, json, streamlit as st
 import google.generativeai as genai
