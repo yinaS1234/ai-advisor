@@ -19,24 +19,21 @@ import numpy as np
 import pandas as pd
 
 def configure_genai():
-    # 1) Simplest: Gemini API key
-    api_key = os.environ.get("GOOGLE_API_KEY") or st.secrets.get("GOOGLE_API_KEY")
-    if api_key:
-        genai.configure(api_key=api_key)
-        return
-
-    # 2) Service account JSON stored in Streamlit secrets
+    # Use Streamlit secrets for service account JSON
     sa_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")
     if sa_json:
         sa_path = "/tmp/sa.json"
-        with open(sa_path, "w") as f:
-            f.write(sa_json if isinstance(sa_json, str) else json.dumps(sa_json))
-        os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
-        genai.configure()
-        return
-
-    # 3) Fallback (works locally with ADC)
-    genai.configure()
+        try:
+            with open(sa_path, "w") as f:
+                f.write(sa_json)  # Already a string, no need for json.dumps
+            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
+            genai.configure()
+            st.write("ADC configured with service account at:", sa_path)  # Debug
+            return
+        except Exception as e:
+            st.error(f"Failed to configure ADC: {e}")
+    else:
+        st.error("No GCP_SERVICE_ACCOUNT_JSON found in secrets.")
 
 configure_genai()
 
