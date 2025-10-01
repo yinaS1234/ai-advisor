@@ -19,31 +19,21 @@ import numpy as np
 import pandas as pd
 
 def configure_genai():
-    sa_json = st.secrets.get("GCP_SERVICE_ACCOUNT_JSON")
-    if sa_json:
-        sa_path = "/tmp/sa.json"
-        try:
-            # 如果是 str，就先 parse
-            if isinstance(sa_json, str):
-                sa_dict = json.loads(sa_json)   # 变成 dict
-            else:
-                sa_dict = sa_json               # 已经是 dict
+    sa_dict = st.secrets["GCP_SERVICE_ACCOUNT_JSON"]   # Already a dict
+    sa_path = "/tmp/sa.json"
+    with open(sa_path, "w") as f:
+        json.dump(sa_dict, f)   # Write dict → JSON file
+    os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
+    genai.configure()
+    st.write("✅ ADC configured successfully")
 
-            with open(sa_path, "w") as f:
-                json.dump(sa_dict, f)           # 正确写入 JSON 文件
-
-            os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
-            genai.configure()
-            st.write("✅ ADC configured with service account at:", sa_path)
-            return
-        except Exception as e:
-            st.error(f"❌ Failed to configure ADC: {e}")
-    else:
-        st.error("⚠️ No GCP_SERVICE_ACCOUNT_JSON found in secrets.")
-
-
+# Call once at startup
 configure_genai()
+
+# Create model after credentials are set
 model = genai.GenerativeModel("gemini-2.5-pro")
+
+
 
 
 def get_sector(ticker):
