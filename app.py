@@ -19,10 +19,13 @@ import numpy as np
 import pandas as pd
 
 def configure_genai():
-    sa_dict = st.secrets["GCP_SERVICE_ACCOUNT_JSON"]   # Already a dict
+    sa_dict = st.secrets["GCP_SERVICE_ACCOUNT_JSON"]
+    sa_dict = dict(sa_dict)  # convert AttrDict → normal dict
+
     sa_path = "/tmp/sa.json"
     with open(sa_path, "w") as f:
-        json.dump(sa_dict, f)   # Write dict → JSON file
+        json.dump(sa_dict, f)
+
     os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = sa_path
     genai.configure()
     st.write("✅ ADC configured successfully")
