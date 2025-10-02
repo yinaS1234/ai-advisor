@@ -142,6 +142,9 @@ if submit:
     plt.subplots_adjust(wspace=0.4)  # add spacing between pies
     ax = ax.flatten()
 
+    # Global title for both charts
+    fig.suptitle("Portfolio Sector Impact", fontsize=16, fontweight="bold", color="black")
+
     ax[0].pie(
         sectors_before.values(),
         labels=sectors_before.keys(),
