@@ -147,7 +147,7 @@ if submit:
     fig.suptitle(
         "Sector Concentration Impact",
         fontsize=16, fontweight="bold", color="black",
-        y=0.92   # move it down (default ~0.98)
+        y=0.98   # move it down (default ~0.98)
     )
 
     ax[0].pie(
