@@ -158,7 +158,9 @@ if submit:
     # Define palettes
  
     
-    pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
+    # pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
+    #             '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
+    pie_colors = ['#ff66b3','#4da6ff', '#6666ff', '#9933ff', '#cc0000',
                 '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
 
     bar_colors = ['#6666ff', '#9933ff', '#cc0000']  # Return, Risk, Drawdown
@@ -197,7 +199,7 @@ if submit:
         colors=pie_colors[:len(sectors_before)],
         textprops={'color': 'black', 'fontsize': 9}
     )
-    ax[0].set_title("Before", color="black", fontsize=12, fontweight="bold")
+    ax[0].set_title("Before", color="black", fontsize=14, fontweight="bold")
 
     ax[1].pie(
         sectors_after.values(),
@@ -206,7 +208,7 @@ if submit:
         colors=pie_colors[:len(sectors_after)],
         textprops={'color': 'black', 'fontsize': 9}
     )
-    ax[1].set_title("After", color="black", fontsize=12, fontweight="bold")
+    ax[1].set_title("After", color="black", fontsize=14, fontweight="bold")
 
     st.pyplot(fig)
 
