@@ -180,7 +180,16 @@ if submit:
     # ax2.tick_params(colors="#333")
     # st.pyplot(fig2)
 
+    # 1. Build sector dicts
+    sectors_before = {}
+    for t, w in port_dict.items():
+        sec = get_sector(t)
+        sectors_before[sec] = sectors_before.get(sec, 0) + w
 
+    sectors_after = sectors_before.copy()
+    sec_new = get_sector(stock.upper())
+    sectors_after[sec_new] = sectors_after.get(sec_new, 0) + new_weight
+    
         # Define palettes (inspired by your RMSE/MAPE charts)
     sector_colors = ['#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3',
                     '#4da6ff', '#6666ff', '#9933ff', '#cc0000']
