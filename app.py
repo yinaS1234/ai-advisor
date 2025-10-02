@@ -158,37 +158,14 @@ if submit:
     # Define palettes
  
     
-    # pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
-    #             '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
-    pie_colors = ['#ff66b3','#4da6ff', '#6666ff', '#9933ff', '#cc0000',
+    pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
                 '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
+
 
     bar_colors = ['#6666ff', '#9933ff', '#cc0000']  # Return, Risk, Drawdown
 
     # Pie charts
-    # fig, ax = plt.subplots(1, 2, figsize=(10, 5), facecolor="white")
-    # ax = ax.flatten()
-    # ax[0].pie(
-    #     sectors_before.values(),
-    #     labels=sectors_before.keys(),
-    #     autopct='%1.1f%%',
-    #     colors=pie_colors[:len(sectors_before)],
-    #     textprops={'color': '#333'}
-    # )
-    # ax[0].set_title("Before", color="#333")
-
-    # ax[1].pie(
-    #     sectors_after.values(),
-    #     labels=sectors_after.keys(),
-    #     autopct='%1.1f%%',
-    #     colors=pie_colors[:len(sectors_after)],
-    #     textprops={'color': '#333'}
-    # )
-    # ax[1].set_title("After", color="#333")
-    # st.pyplot(fig)
-
-    # Pie charts
-    fig, ax = plt.subplots(1, 2, figsize=(11, 5), facecolor="white")
+    fig, ax = plt.subplots(1, 2, figsize=(11, 7), facecolor="white")
     plt.subplots_adjust(wspace=0.4)  # add spacing between pies
     ax = ax.flatten()
 
@@ -197,7 +174,8 @@ if submit:
         labels=sectors_before.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_before)],
-        textprops={'color': 'black', 'fontsize': 9}
+        #textprops={'color': 'black', 'fontsize': 9}
+        textprops={'color': 'black', 'fontsize': 11, 'fontweight': 'bold'}
     )
     ax[0].set_title("Before", color="black", fontsize=14, fontweight="bold")
 
@@ -206,7 +184,8 @@ if submit:
         labels=sectors_after.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_after)],
-        textprops={'color': 'black', 'fontsize': 9}
+        #textprops={'color': 'black', 'fontsize': 9}
+        textprops={'color': 'black', 'fontsize': 11, 'fontweight': 'bold'}
     )
     ax[1].set_title("After", color="black", fontsize=14, fontweight="bold")
 
