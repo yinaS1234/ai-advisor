@@ -145,14 +145,41 @@ if submit:
     st.pyplot(fig2)
 
     # ------------------- LLM Recommendation -------------------
+    # prompt = f"""
+    # You are a CFA-level advisor. User: {age} years old, risk profile {risk_profile}.
+    # Portfolio before: {port_dict}. Added stock: {stock.upper()} (5%).
+    # Metrics changes: {json.dumps(delta)}. Criteria: EPS>10%, P/E<30, D/E<1, ROE>15%.
+    # Write a short recommendation explaining the trade-off, suggest an alternative if diversification is poor.
+    # """
+    # response = model.generate_content(prompt)
+    # st.write(response.text)
+
+    # st.json(delta)
+    # st.caption("Demo only — not financial advice.")
+
+
+# ------------------- LLM Recommendation -------------------
     prompt = f"""
     You are a CFA-level advisor. User: {age} years old, risk profile {risk_profile}.
     Portfolio before: {port_dict}. Added stock: {stock.upper()} (5%).
-    Metrics changes: {json.dumps(delta)}. Criteria: EPS>10%, P/E<30, D/E<1, ROE>15%.
-    Write a short recommendation explaining the trade-off, suggest an alternative if diversification is poor.
+
+    Metrics changes (note carefully):
+    - return_change = % change in expected return (positive = better, negative = worse).
+    - risk_change = % change in volatility (positive = more daily swings).
+    - drawdown_change = % change in maximum drawdown 
+    (negative = improved resilience, positive = worse max loss).
+
+    Metrics changes: {json.dumps(delta)}
+
+    Criteria: EPS>10% (growth), P/E<30 (value), D/E<1 (health), ROE>15% (quality).
+
+    **Output format:**
+    1. Executive Summary — one sentence (30–40 words) clearly state if adding {stock.upper()} is advisable or not, based on return_change, risk_change, drawdown_change, and sector concentration.
+    2. Detailed Analysis — explain trade-off in plain English (risk = daily swings, drawdown = worst-case loss during 6 months).
+    3. Alternative Suggestion — only if diversification is poor, suggest one stock/ETF and why.
     """
     response = model.generate_content(prompt)
     st.write(response.text)
-
+    
     st.json(delta)
     st.caption("Demo only — not financial advice.")
