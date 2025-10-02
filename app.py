@@ -190,8 +190,12 @@ if submit:
     sectors_after[sec_new] = sectors_after.get(sec_new, 0) + new_weight
 
     # Define palettes
-    pie_colors = ['#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3',
-                '#4da6ff', '#6666ff', '#9933ff', '#cc0000']
+    # pie_colors = ['#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3',
+    #             '#4da6ff', '#6666ff', '#9933ff', '#cc0000']
+    
+    pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
+                '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
+
     bar_colors = ['#6666ff', '#9933ff', '#cc0000']  # Return, Risk, Drawdown
 
     # Pie charts
