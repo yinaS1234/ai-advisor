@@ -218,13 +218,33 @@ if submit:
 
     # Bar chart (fixed order)
     fig2, ax2 = plt.subplots(facecolor="white")
-    keys = ["return_change", "risk_change", "drawdown_change"]
+
+    keys   = ["return_change", "risk_change", "drawdown_change"]
     labels = ["Return", "Risk\n(Std Dev)", "Drawdown\n(MaxDD–Worst Drop)"]
 
-    ax2.bar(labels, [delta[k] for k in keys], color=bar_colors)
+    # make sure all values are finite numbers (NaN/None → 0)
+    vals = []
+    for k in keys:
+        v = delta.get(k, 0)
+        try:
+            v = float(v)
+        except:
+            v = 0.0
+        if not np.isfinite(v):
+            v = 0.0
+        vals.append(v)
+
+    x = np.arange(len(labels))
+    ax2.bar(x, vals, color=['#6666ff', '#9933ff', '#cc0000'])  # your palette
+
+    ax2.set_xticks(x)
+    ax2.set_xticklabels(labels, ha="center")
     ax2.set_title("Portfolio Impact (%)", color="#333")
     ax2.tick_params(colors="#333")
+    fig2.subplots_adjust(bottom=0.2)  # room for multi-line labels
+
     st.pyplot(fig2)
+
 
 
  
