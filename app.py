@@ -140,7 +140,7 @@ if submit:
     # Pie charts
     fig, ax = plt.subplots(1, 2, figsize=(11, 7), facecolor="white")
     #plt.subplots_adjust(wspace=0.4)  # add spacing between pies
-    plt.subplots_adjust(wspace=0.4, top=0.4) 
+    plt.subplots_adjust(wspace=0.4, top=1.2) 
     ax = ax.flatten()
 
     # Global title for both charts
