@@ -115,34 +115,7 @@ if submit:
         "drawdown_change": round((dd_after - dd_before) / dd_before * 100, 2)
     }
 
-    # # ------------------- Charts -------------------
-    # # Sector allocation (before/after)
-    # sectors_before = {}
-    # for t, w in port_dict.items():
-    #     sec = get_sector(t)
-    #     sectors_before[sec] = sectors_before.get(sec, 0) + w
 
-    # sectors_after = sectors_before.copy()
-    # sec_new = get_sector(stock.upper())
-    # sectors_after[sec_new] = sectors_after.get(sec_new, 0) + new_weight
-
-    # fig, ax = plt.subplots(1, 2, figsize=(10, 5))
-    # ax = ax.flatten()
-    # ax[0].pie(sectors_before.values(), labels=sectors_before.keys(), autopct='%1.1f%%')
-    # ax[0].set_title("Before")
-    # ax[1].pie(sectors_after.values(), labels=sectors_after.keys(), autopct='%1.1f%%')
-    # ax[1].set_title("After")
-    # st.pyplot(fig)
-
-    # # Bar chart (fixed order)
-    # fig2, ax2 = plt.subplots()
-    # keys = ["return_change", "risk_change", "drawdown_change"]
-    # #ax2.bar(["Return", "Risk", "Drawdown"], [delta[k] for k in keys])
-    # ax2.bar(
-    # ["Return", "Risk (Std)", "Drawdown (MaxDD–Worst Drop)"],
-    # [delta[k] for k in keys])
-    # ax2.set_title("Portfolio Impact (%)")
-    # st.pyplot(fig2)
 
    # ------------------- Charts -------------------
 
@@ -174,8 +147,7 @@ if submit:
         labels=sectors_before.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_before)],
-        #textprops={'color': 'black', 'fontsize': 9}
-        textprops={'color': 'black', 'fontsize': 11, 'fontweight': 'bold'}
+        textprops={'color': 'black', 'fontsize': 10, 'fontweight': 'bold'}
     )
     ax[0].set_title("Before", color="black", fontsize=14, fontweight="bold")
 
@@ -184,8 +156,7 @@ if submit:
         labels=sectors_after.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_after)],
-        #textprops={'color': 'black', 'fontsize': 9}
-        textprops={'color': 'black', 'fontsize': 11, 'fontweight': 'bold'}
+        textprops={'color': 'black', 'fontsize': 10, 'fontweight': 'bold'}
     )
     ax[1].set_title("After", color="black", fontsize=14, fontweight="bold")
 
@@ -221,8 +192,6 @@ if submit:
     st.pyplot(fig2)
 
 
-
- 
 
 
 
