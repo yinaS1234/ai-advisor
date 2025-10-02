@@ -145,40 +145,6 @@ if submit:
     # st.pyplot(fig2)
 
    # ------------------- Charts -------------------
-    # Sector allocation (before/after)
-    # sectors_before = {}
-    # for t, w in port_dict.items():
-    #     sec = get_sector(t)
-    #     sectors_before[sec] = sectors_before.get(sec, 0) + w
-
-    # sectors_after = sectors_before.copy()
-    # sec_new = get_sector(stock.upper())
-    # sectors_after[sec_new] = sectors_after.get(sec_new, 0) + new_weight
-
-    # # Modern pastel color palette (neumorphism-friendly)
-    # colors = plt.cm.Set2.colors  
-
-    # # Pie charts
-    # fig, ax = plt.subplots(1, 2, figsize=(10, 5), facecolor="white")
-    # ax = ax.flatten()
-    # ax[0].pie(sectors_before.values(), labels=sectors_before.keys(),
-    #         autopct='%1.1f%%', colors=colors, textprops={'color': '#333'})
-    # ax[0].set_title("Before", color="#333")
-
-    # ax[1].pie(sectors_after.values(), labels=sectors_after.keys(),
-    #         autopct='%1.1f%%', colors=colors, textprops={'color': '#333'})
-    # ax[1].set_title("After", color="#333")
-    # st.pyplot(fig)
-
-    # # Bar chart (fixed order)
-    # fig2, ax2 = plt.subplots(facecolor="white")
-    # keys = ["return_change", "risk_change", "drawdown_change"]
-    # labels = ["Return", "Risk\n(Std Dev)", "Drawdown\n(MaxDD–Worst Drop)"]
-
-    # ax2.bar(labels, [delta[k] for k in keys], color=colors[:3])
-    # ax2.set_title("Portfolio Impact (%)", color="#333")
-    # ax2.tick_params(colors="#333")
-    # st.pyplot(fig2)
 
     sectors_before = {}
     for t, w in port_dict.items():
@@ -190,8 +156,7 @@ if submit:
     sectors_after[sec_new] = sectors_after.get(sec_new, 0) + new_weight
 
     # Define palettes
-    # pie_colors = ['#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3',
-    #             '#4da6ff', '#6666ff', '#9933ff', '#cc0000']
+ 
     
     pie_colors = ['#4da6ff', '#6666ff', '#9933ff', '#cc0000',
                 '#ffb84d', '#ff704d', '#ff4d4d', '#ff66b3']
@@ -199,25 +164,50 @@ if submit:
     bar_colors = ['#6666ff', '#9933ff', '#cc0000']  # Return, Risk, Drawdown
 
     # Pie charts
-    fig, ax = plt.subplots(1, 2, figsize=(10, 5), facecolor="white")
+    # fig, ax = plt.subplots(1, 2, figsize=(10, 5), facecolor="white")
+    # ax = ax.flatten()
+    # ax[0].pie(
+    #     sectors_before.values(),
+    #     labels=sectors_before.keys(),
+    #     autopct='%1.1f%%',
+    #     colors=pie_colors[:len(sectors_before)],
+    #     textprops={'color': '#333'}
+    # )
+    # ax[0].set_title("Before", color="#333")
+
+    # ax[1].pie(
+    #     sectors_after.values(),
+    #     labels=sectors_after.keys(),
+    #     autopct='%1.1f%%',
+    #     colors=pie_colors[:len(sectors_after)],
+    #     textprops={'color': '#333'}
+    # )
+    # ax[1].set_title("After", color="#333")
+    # st.pyplot(fig)
+
+    # Pie charts
+    fig, ax = plt.subplots(1, 2, figsize=(11, 5), facecolor="white")
+    plt.subplots_adjust(wspace=0.4)  # add spacing between pies
     ax = ax.flatten()
+
     ax[0].pie(
         sectors_before.values(),
         labels=sectors_before.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_before)],
-        textprops={'color': '#333'}
+        textprops={'color': 'black', 'fontsize': 9}
     )
-    ax[0].set_title("Before", color="#333")
+    ax[0].set_title("Before", color="black", fontsize=12, fontweight="bold")
 
     ax[1].pie(
         sectors_after.values(),
         labels=sectors_after.keys(),
         autopct='%1.1f%%',
         colors=pie_colors[:len(sectors_after)],
-        textprops={'color': '#333'}
+        textprops={'color': 'black', 'fontsize': 9}
     )
-    ax[1].set_title("After", color="#333")
+    ax[1].set_title("After", color="black", fontsize=12, fontweight="bold")
+
     st.pyplot(fig)
 
     # Bar chart (fixed order)
