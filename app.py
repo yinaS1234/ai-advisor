@@ -139,15 +139,14 @@ if submit:
 
     # Pie charts
     fig, ax = plt.subplots(1, 2, figsize=(11, 7), facecolor="white")
-    plt.subplots_adjust(wspace=0.4)  # add spacing between pies
+    #plt.subplots_adjust(wspace=0.4)  # add spacing between pies
+    plt.subplots_adjust(wspace=0.4, top=0.80) 
     ax = ax.flatten()
 
     # Global title for both charts
-    #fig.suptitle("Portfolio Sector Impact", fontsize=16, fontweight="bold", color="black")
     fig.suptitle(
         "Sector Concentration Impact",
-        fontsize=16, fontweight="bold", color="black",
-        y=0.98   # move it down (default ~0.98)
+        fontsize=16, fontweight="bold", color="black"
     )
 
     ax[0].pie(
