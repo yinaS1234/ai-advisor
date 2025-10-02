@@ -143,7 +143,12 @@ if submit:
     ax = ax.flatten()
 
     # Global title for both charts
-    fig.suptitle("Portfolio Sector Impact", fontsize=16, fontweight="bold", color="black")
+    #fig.suptitle("Portfolio Sector Impact", fontsize=16, fontweight="bold", color="black")
+    fig.suptitle(
+        "Sector Concentration Impact",
+        fontsize=16, fontweight="bold", color="black",
+        y=0.92   # move it down (default ~0.98)
+    )
 
     ax[0].pie(
         sectors_before.values(),
