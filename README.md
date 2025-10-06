@@ -1,7 +1,7 @@
 # 🧠 AI Portfolio Advisor  
 
 **60-minute portfolio evaluation → 1-minute AI advisor-style “add-this-stock” before/after visualization + recommendation**  
-[🔗 Live App](https://ai-advisor-add-stock-check-portfolio-impact.streamlit.app/)
+[🔗 Live App(coming soon)](https://ai-advisor-add-stock-check-portfolio-impact.streamlit.app/)
 
 ---
 
@@ -15,7 +15,7 @@ This project bridges **finance**, **data visualization**, and **AI interpretatio
 
 ---
 
-### 🧩 Key Features  
+###  Key Features  
 - **Portfolio Impact Analysis** – before/after comparison of portfolio risk, return, and drawdown.  
 - **Client Persona Alignment** – factor-based recommendation (value, growth, quality, risk).  
 - **Interactive Visualization** – sector concentration and performance charts via Streamlit.  
@@ -23,18 +23,10 @@ This project bridges **finance**, **data visualization**, and **AI interpretatio
 
 ---
 
-### ⚙️ Tech Stack  
-- **Frontend:** Streamlit  
-- **Backend:** Python  
-- **AI Model:** Vertex AI  
-- **Visualization:** Matplotlib / Plotly  
-- **Deployment:** Streamlit Cloud  
-
----
 
 ### 🎬 Demo Preview (coming soon)  
 A short **30–60 second AI Advisor demo** will be added soon.  
-[🎥 Watch Demo (placeholder)](https://your-video-link.com)  
+[🎥 Watch Demo (placeholder)]()  
 *(GIF and video link will be updated once finalized.)*  
 
 ---
