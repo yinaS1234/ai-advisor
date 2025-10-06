@@ -1,7 +1,7 @@
 # 🧠 AI Portfolio Advisor  
 
 **60-minute portfolio evaluation → 1-minute AI advisor-style “add-this-stock” before/after visualization + recommendation**  
-[🔗 Live App (coming soon)](https://ai-advisor-add-stock-check-portfolio-impact.streamlit.app/)
+[🔗 Live App](https://ai-advisor-add-stock-check-portfolio-impact.streamlit.app/)
 
 ---
 
