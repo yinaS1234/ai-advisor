@@ -25,7 +25,7 @@ This project bridges **finance**, **data visualization**, and **AI interpretatio
 
 
 ### 🎬 Demo Preview (coming soon)  
-A short **30–60 second AI Advisor demo** will be added soon.  
+A short AI Advisor demo is availble on youtube. View 👇 
 [🎥 Watch Demo ](https://www.youtube.com/shorts/dcW0Vhvp9Mo)  
 *(GIF and video link will be updated once finalized.)*  
 
