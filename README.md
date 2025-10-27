@@ -6,7 +6,18 @@
 ### 🎬 Demo 
 A short AI Advisor demo is availble on youtube. View 👇 
 
-[🎥 Watch Demo ](https://www.youtube.com/shorts/dcW0Vhvp9Mo)  
+[🎥 Watch Demo ](https://www.youtube.com/shorts/dcW0Vhvp9Mo) 
+
+<details open>
+
+  <p align="center">
+    <a href="https://github.com/yinaS1234/ai-advisor" target="_blank">
+      <img src="https://github.com/yinaS1234/yinaS1234/blob/main/aiadviso-ezgif.com-optimize.gif" 
+           alt="AI Advisor Demo" width="400" height="600"/>
+    </a>
+  </p>
+
+</details>
 
 ---
 
