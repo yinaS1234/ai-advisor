@@ -3,6 +3,11 @@
 **60-minute portfolio evaluation → 1-minute AI advisor-style “add-this-stock” before/after visualization + recommendation**  
 [🔗 Live App](https://ai-advisor-add-stock-check-portfolio-impact.streamlit.app/)
 
+### 🎬 Demo 
+A short AI Advisor demo is availble on youtube. View 👇 
+
+[🎥 Watch Demo ](https://www.youtube.com/shorts/dcW0Vhvp9Mo)  
+
 ---
 
 ### 🌟 Overview  
@@ -24,10 +29,7 @@ This project bridges **finance**, **data visualization**, and **AI interpretatio
 ---
 
 
-### 🎬 Demo Preview (coming soon)  
-A short AI Advisor demo is availble on youtube. View 👇 
 
-[🎥 Watch Demo ](https://www.youtube.com/shorts/dcW0Vhvp9Mo)  
 
 ---
 
